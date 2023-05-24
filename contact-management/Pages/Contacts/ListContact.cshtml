@@ -15,6 +15,7 @@
                 <th>Name</th>
                 <th>Contact</th>
                 <th>Email Address</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,9 @@
                     <td>@contact.Name</td>
                     <td>@contact.Phone</td>
                     <td>@contact.Email</td>
+                    <td>
+                        <a href="/Contacts/EditContact/@contact.ID" class="btn btn-success">Edit</a>
+                    </td>
                 </tr>
             }
         </tbody>
