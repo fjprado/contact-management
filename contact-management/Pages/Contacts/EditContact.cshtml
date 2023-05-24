@@ -2,15 +2,22 @@
 @model contact_management.Pages.Contacts.EditContactModel
 @{
     ViewData["Title"] = "Edit Contact";
-    var message = ViewData["ContactEdited"]?.ToString();
+    var messageSuccess = ViewData["ContactEdited"]?.ToString();
+    var messageDuplicated = ViewData["ContactDuplicated"]?.ToString();
 }
 
 <form method="post">
 
-    @if (!string.IsNullOrWhiteSpace(message))
+    @if (!string.IsNullOrWhiteSpace(messageSuccess))
     {
         <div class="alert alert-success" role="alert">
-            @message
+            @messageSuccess
+        </div>
+    }
+    @if (!string.IsNullOrWhiteSpace(messageDuplicated))
+    {
+        <div class="alert alert-danger" role="alert">
+            @messageDuplicated
         </div>
     }
 

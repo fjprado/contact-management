@@ -18,7 +18,7 @@ namespace contact_management.Pages.Contacts
 
         public void OnGet()
         {
-            Contacts = _dbContext.Contacts.ToList();
+            Contacts = _dbContext.Contacts.Where(x => x.Active).ToList();
         }
 
         public IActionResult OnPostDelete(Guid id)
@@ -26,7 +26,7 @@ namespace contact_management.Pages.Contacts
             var existingContact = _dbContext.Contacts.Find(id);
             if (existingContact != null)
             {
-                _dbContext.Contacts.Remove(existingContact);
+                existingContact.Active = false;
                 _dbContext.SaveChanges();
             }
 
