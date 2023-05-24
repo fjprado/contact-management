@@ -35,7 +35,7 @@ namespace contact_management.Pages.Contacts
             }
         }
 
-        public void OnPost()
+        public void OnPostUpdate()
         {
             if(EditContactViewModel != null)
             {
@@ -52,6 +52,23 @@ namespace contact_management.Pages.Contacts
                     ViewData["ContactEdited"] = "Contact has been edited successfully!";
                 }                
             }            
+        }
+
+        public IActionResult OnPostDelete()
+        {
+            if (EditContactViewModel != null)
+            {
+                var existingContact = _dbContext.Contacts.Find(EditContactViewModel.ID);
+                if (existingContact != null)
+                {
+                    _dbContext.Contacts.Remove(existingContact);
+                    _dbContext.SaveChanges();
+
+                    return RedirectToPage("/Contacts/ListContact");
+                }
+            }
+
+            return Page();
         }
     }
 }

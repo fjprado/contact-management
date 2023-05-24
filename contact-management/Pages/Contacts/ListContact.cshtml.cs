@@ -1,5 +1,7 @@
 using contact_management.Data;
 using contact_management.Models.Domain;
+using contact_management.Models.ViewModel;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace contact_management.Pages.Contacts
@@ -17,6 +19,18 @@ namespace contact_management.Pages.Contacts
         public void OnGet()
         {
             Contacts = _dbContext.Contacts.ToList();
+        }
+
+        public IActionResult OnPostDelete(Guid id)
+        {
+            var existingContact = _dbContext.Contacts.Find(id);
+            if (existingContact != null)
+            {
+                _dbContext.Contacts.Remove(existingContact);
+                _dbContext.SaveChanges();
+            }
+
+            return RedirectToPage("/Contacts/ListContact");
         }
     }
 }
