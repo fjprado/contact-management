@@ -26,6 +26,7 @@
         <input type="email" class="form-control" asp-for="ContactViewModel.Email" readonly/>
     </div>
 
-    <div class="mb-2">
+    <div class="col-3 mb-2 pt-4 d-flex justify-content-between">
         <a href="/Contacts/EditContact/@(Model.ContactViewModel.ID)" class="btn btn-primary">Edit</a>
+        <a href="/Contacts/ListContact" class="btn btn-warning">Cancel</a>
     </div>

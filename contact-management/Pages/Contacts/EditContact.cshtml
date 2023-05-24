@@ -36,8 +36,10 @@
         <input type="email" class="form-control" asp-for="EditContactViewModel.Email" />
     </div>
 
-    <div class="mb-2">
-        <button type="submit" class="btn btn-primary">Update</button>
+    <div class="col-3 mb-2 pt-4 d-flex justify-content-between" >
+        <button type="submit" class="btn btn-primary" asp-page-handler="Update">Update</button>
+        <button type="submit" class="btn btn-danger" asp-page-handler="Delete" onclick="return confirm('Are you sure you want to delete?')">Delete</button>
+        <a href="/Contacts/ListContact" class="btn btn-warning">Cancel</a>
     </div>
 
 </form>
