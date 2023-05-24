@@ -1,0 +1,36 @@
+﻿@page
+@model contact_management.Pages.Contacts.ListContactModel
+@{
+    ViewData["Title"] = "List Contacts";
+}
+
+<h1 class="mb-2">Contacts</h1>
+
+@if(Model.Contacts != null && Model.Contacts.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Email Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model.Contacts)
+            {
+                <tr>
+                    <td>@contact.ID</td>
+                    <td>@contact.Name</td>
+                    <td>@contact.Phone</td>
+                    <td>@contact.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No contacts has been found!</p>
+}

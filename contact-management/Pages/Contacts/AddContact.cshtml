@@ -1,6 +1,7 @@
 ﻿@page
 @model contact_management.Pages.Contacts.AddContactModel
 @{    
+    ViewData["Title"] = "Add Contact";
 }
 
 <form method="post">
@@ -13,12 +14,12 @@
     </div>
 
     <div class="mb-2">
-        <label class="form-label">Phone</label>
+        <label class="form-label">Contact</label>
         <input type="text" class="form-control" asp-for="AddContactViewModel.Phone" />
     </div>
 
     <div class="mb-2">
-        <label class="form-label">Email</label>
+        <label class="form-label">Email Address</label>
         <input type="email" class="form-control" asp-for="AddContactViewModel.Email"/>
     </div>
 
