@@ -32,7 +32,7 @@ namespace contact_management.Pages.Contacts
             };
 
             _dbContext.Contacts.Add(contactModel);
-            _dbContext.SaveChanges();           
+            _dbContext.SaveChanges();
         }
     }
 }
