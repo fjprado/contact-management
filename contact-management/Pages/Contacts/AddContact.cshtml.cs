@@ -22,17 +22,33 @@ namespace contact_management.Pages.Contacts
         {
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            if(_dbContext.Contacts
+                .Where(x => x.Phone == AddContactViewModel.Phone || x.Email == AddContactViewModel.Email)
+                .Any())
+            {
+                ViewData["ContactDuplicated"] = "A contact with same contact and/or email address already exists!";
+                return Page();
+            }
+
             var contactModel = new Contact
             {
                 Name = AddContactViewModel.Name,
                 Phone = AddContactViewModel.Phone,
-                Email = AddContactViewModel.Email
+                Email = AddContactViewModel.Email,
+                Active = true
             };
 
             _dbContext.Contacts.Add(contactModel);
             _dbContext.SaveChanges();
+
+            return RedirectToPage("/Contacts/ListContact");
         }
     }
 }

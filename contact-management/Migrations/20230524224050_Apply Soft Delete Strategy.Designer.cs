@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using contact_management.Data;
 
@@ -10,9 +11,11 @@ using contact_management.Data;
 namespace contact_management.Migrations
 {
     [DbContext(typeof(ContactManagementDbContext))]
-    partial class ContactManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230524224050_Apply Soft Delete Strategy")]
+    partial class ApplySoftDeleteStrategy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
